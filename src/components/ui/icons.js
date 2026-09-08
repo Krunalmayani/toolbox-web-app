@@ -1,0 +1,58 @@
+/**
+ * Explicit icon map. Importing the icons by name (rather than `import * as`)
+ * keeps tree-shaking working — a namespace import pulls the whole of
+ * lucide-react into the bundle.
+ */
+import {
+  BookOpen,
+  Braces,
+  CheckCheck,
+  Clock,
+  Code2,
+  Copy,
+  Crop,
+  Droplet,
+  FileText,
+  Globe,
+  Image,
+  KeyRound,
+  Link2,
+  Lock,
+  Palette,
+  QrCode,
+  Repeat,
+  Ruler,
+  SlidersHorizontal,
+  Sparkles,
+  Terminal,
+  Type,
+  Upload,
+  Wrench,
+} from 'lucide-react'
+
+export const ICONS = {
+  BookOpen,
+  Braces,
+  CheckCheck,
+  Clock,
+  Code2,
+  Copy,
+  Crop,
+  Droplet,
+  FileText,
+  Globe,
+  Image,
+  KeyRound,
+  Link2,
+  Lock,
+  Palette,
+  QrCode,
+  Repeat,
+  Ruler,
+  SlidersHorizontal,
+  Sparkles,
+  Terminal,
+  Type,
+  Upload,
+  Wrench,
+}

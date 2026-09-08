@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens — ported 1:1 from the Figma `color` / `space` / `radius`
+   variable collections. Light values live on :root, the dark mode swaps the
+   same token names so component classes never need `dark:` variants.
+--------------------------------------------------------------------------- */
+:root {
+  --tb-canvas: #ffffff;
+  --tb-subtle: #f7f8fa;
+  --tb-surface: #ffffff;
+  --tb-inverse: #0f1115;
+  --tb-accent: #2563eb;
+  --tb-accent-soft: #eff4ff;
+  --tb-border: #e6e8ec;
+  --tb-border-strong: #d3d7de;
+  --tb-text: #0f1115;
+  --tb-text-secondary: #5c6470;
+  --tb-text-tertiary: #8a93a0;
+  --tb-on-accent: #ffffff;
+
+  --tb-tint-blue: #eff4ff;
+  --tb-tint-violet: #f4efff;
+  --tb-tint-emerald: #e9f8f1;
+  --tb-tint-amber: #fef4e6;
+  --tb-tint-rose: #feecf0;
+  --tb-tint-cyan: #e6f7fb;
+
+  --tb-fg-blue: #2563eb;
+  --tb-fg-violet: #7c3aed;
+  --tb-fg-emerald: #059669;
+  --tb-fg-amber: #d97706;
+  --tb-fg-rose: #e11d48;
+  --tb-fg-cyan: #0891b2;
+}
+
+.dark {
+  --tb-canvas: #0b0d0f;
+  --tb-subtle: #14171a;
+  --tb-surface: #16191d;
+  --tb-inverse: #ffffff;
+  --tb-accent: #3b82f6;
+  --tb-accent-soft: #1b2334;
+  --tb-border: #262b31;
+  --tb-border-strong: #333a42;
+  --tb-text: #f5f7fa;
+  --tb-text-secondary: #98a2b3;
+  --tb-text-tertiary: #6b7480;
+  --tb-on-accent: #ffffff;
+
+  --tb-tint-blue: #16233d;
+  --tb-tint-violet: #241b3b;
+  --tb-tint-emerald: #10291f;
+  --tb-tint-amber: #2e2211;
+  --tb-tint-rose: #331520;
+  --tb-tint-cyan: #10262e;
+
+  --tb-fg-blue: #7ca6ff;
+  --tb-fg-violet: #a78bfa;
+  --tb-fg-emerald: #34d399;
+  --tb-fg-amber: #fbbf24;
+  --tb-fg-rose: #fb7185;
+  --tb-fg-cyan: #22d3ee;
+}
+
+@theme inline {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-canvas: var(--tb-canvas);
+  --color-subtle: var(--tb-subtle);
+  --color-surface: var(--tb-surface);
+  --color-inverse: var(--tb-inverse);
+  --color-accent: var(--tb-accent);
+  --color-accent-soft: var(--tb-accent-soft);
+  --color-line: var(--tb-border);
+  --color-line-strong: var(--tb-border-strong);
+  --color-ink: var(--tb-text);
+  --color-ink-2: var(--tb-text-secondary);
+  --color-ink-3: var(--tb-text-tertiary);
+  --color-on-accent: var(--tb-on-accent);
+
+  --color-tint-blue: var(--tb-tint-blue);
+  --color-tint-violet: var(--tb-tint-violet);
+  --color-tint-emerald: var(--tb-tint-emerald);
+  --color-tint-amber: var(--tb-tint-amber);
+  --color-tint-rose: var(--tb-tint-rose);
+  --color-tint-cyan: var(--tb-tint-cyan);
+
+  --color-fg-blue: var(--tb-fg-blue);
+  --color-fg-violet: var(--tb-fg-violet);
+  --color-fg-emerald: var(--tb-fg-emerald);
+  --color-fg-amber: var(--tb-fg-amber);
+  --color-fg-rose: var(--tb-fg-rose);
+  --color-fg-cyan: var(--tb-fg-cyan);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --shadow-xs: 0 1px 2px rgba(15, 17, 21, 0.05);
+  --shadow-sm: 0 1px 2px rgba(15, 17, 21, 0.04), 0 2px 6px -1px rgba(15, 17, 21, 0.06);
+  --shadow-md: 0 2px 4px -1px rgba(15, 17, 21, 0.05), 0 6px 16px -2px rgba(15, 17, 21, 0.08);
+  --shadow-lg: 0 4px 8px -2px rgba(15, 17, 21, 0.05), 0 16px 32px -4px rgba(15, 17, 21, 0.1);
+  --shadow-xl: 0 8px 16px -4px rgba(15, 17, 21, 0.06), 0 28px 56px -8px rgba(15, 17, 21, 0.16);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+  }
+  ::selection {
+    background: var(--tb-accent-soft);
+    color: var(--tb-accent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--tb-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Type ramp — mirrors the Figma text styles */
+  .t-display { @apply text-[34px] leading-[42px] sm:text-[44px] sm:leading-[52px] lg:text-[56px] lg:leading-[64px] font-bold tracking-[-0.03em]; }
+  .t-h1 { @apply text-[26px] leading-[34px] lg:text-[32px] lg:leading-10 font-semibold tracking-[-0.02em]; }
+  .t-h2 { @apply text-[20px] leading-7 lg:text-[24px] lg:leading-8 font-semibold tracking-[-0.015em]; }
+  .t-h3 { @apply text-[18px] leading-7 lg:text-[20px] font-semibold tracking-[-0.01em]; }
+  .t-h4 { @apply text-[16px] leading-6 font-semibold tracking-[-0.005em]; }
+  .t-body-lg { @apply text-[16px] leading-[26px] lg:text-[18px] lg:leading-7; }
+  .t-body { @apply text-[15px] leading-6; }
+  .t-body-sm { @apply text-[13px] leading-5; }
+  .t-label { @apply text-[15px] leading-5 font-medium; }
+  .t-label-sm { @apply text-[13px] leading-[18px] font-medium; }
+  .t-label-xs { @apply text-[11px] leading-4 font-medium tracking-[0.04em]; }
+
+  .shell { @apply mx-auto w-full max-w-[1200px]; }
+  .gutter { @apply px-5 sm:px-8 lg:px-[120px]; }
+
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; }
+}
+
+/* Modal motion */
+@keyframes tb-fade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes tb-pop { from { opacity: 0; transform: translateY(12px) scale(0.985) } to { opacity: 1; transform: none } }
+.anim-fade { animation: tb-fade 160ms ease-out both; }
+.anim-pop { animation: tb-pop 200ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade, .anim-pop { animation: none; }
+  html { scroll-behavior: auto; }
+}
